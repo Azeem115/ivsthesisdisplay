@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_circle_up');
+
+html {
+  font-family: 'Jost', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  height: 100vh;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 15px;
+}
+
+nav.main-navigation ul {
+  padding: 0;
+  margin: 0;
+}
+
+.site-header a.icon {
+  display: none;
+}
+
+header,
+footer {
+  padding: 25px 0;
+  background: #1a1a1a;
+}
+
+header,
+footer {
+  span {
+    color: #fff;
+  }
+}
+
+main.main-content {
+  height: calc(100% - 25%);
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  margin-left: 2.1em;
+  color: var(--white);
+}
+
+footer .site-footer img {
+  padding-left: 15px;
+}
+
+/* RESET RULES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --accordion-color: #282828;
+  --title-color: #191919;
+  --active-color: #3e86d2;
+  --separator-color: #292c2d;
+  --white: #ffffff;
+  --red: #e74c3c;
+  --black: #000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+label {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input[type='radio'] {
+  position: absolute;
+  left: -9999px;
+}
+
+/* ACCORDION
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.accordion {
+  position: relative;
+  min-height: 100%;
+  margin: 0 auto;
+  background: var(--accordion-color);
+  color: var(--white);
+}
+
+.accordion label {
+  text-align: center;
+}
+
+.accordion,
+.accordion li,
+.accordion .accordion-title {
+  display: flex;
+}
+
+.accordion li:not(:last-child) {
+  border: 1px solid var(--separator-color);
+}
+
+.accordion .accordion-title {
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 70px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: normal;
+  padding: 20px 10px;
+  background: var(--title-color);
+  transition: color 0.1s;
+  color: var(--white);
+}
+
+.accordion .accordion-heading {
+  display: inline-block;
+  white-space: nowrap;
+  transform-origin: bottom;
+  transform: rotate(-90deg) translate(50%, 50%);
+  color: var(--white);
+}
+
+.accordion .accordion-content {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 20px;
+  transition: max-height 0.2s ease-out;
+}
+
+[value='Animal']:checked ~ .accordion [data-radio='animal'],
+[value='Plant']:checked ~ .accordion [data-radio='plant'],
+[value='Space']:checked ~ .accordion [data-radio='space'],
+[value='River']:checked ~ .accordion [data-radio='river'],
+[value='Sky']:checked ~ .accordion [data-radio='sky'] {
+  flex-grow: 1;
+  transition: max-height 0.2s ease-out;
+  color: var(--white);
+}
+
+[value='Animal'] ~ .accordion [data-radio='animal'] label:hover,
+[value='Animal']:checked ~ .accordion [data-radio='animal'] label {
+  background-color: #ef476f;
+  transition: ease-out 0.3s;
+}
+
+[value='Plant'] ~ .accordion [data-radio='plant'] label:hover,
+[value='Plant']:checked ~ .accordion [data-radio='plant'] label {
+  background-color: #118ab2;
+  transition: ease-out 0.3s;
+}
+
+[value='Space'] ~ .accordion [data-radio='space'] label:hover,
+[value='Space']:checked ~ .accordion [data-radio='space'] label {
+  background-color: #06d6a0;
+  transition: ease-out 0.3s;
+}
+
+[value='River'] ~ .accordion [data-radio='river'] label:hover,
+[value='River']:checked ~ .accordion [data-radio='river'] label {
+  background-color: #ffd166;
+  transition: ease-out 0.3s;
+}
+
+[value='Sky'] ~ .accordion [data-radio='sky'] label:hover,
+[value='Sky']:checked ~ .accordion [data-radio='sky'] label {
+  background-color: #073b4c;
+  transition: ease-out 0.3s;
+}
+
+[value='Animal']:checked ~ .accordion [for='animal'] + .accordion-content,
+[value='Plant']:checked ~ .accordion [for='plant'] + .accordion-content,
+[value='Space']:checked ~ .accordion [for='space'] + .accordion-content,
+[value='River']:checked ~ .accordion [for='river'] + .accordion-content,
+[value='Sky']:checked ~ .accordion [for='sky'] + .accordion-content {
+  display: flex;
+}
+
+[value='Animal']:checked ~ .accordion [for='animal'],
+[value='Plant']:checked ~ .accordion [for='plant'],
+[value='Space']:checked ~ .accordion [for='space'],
+[value='River']:checked ~ .accordion [for='river'],
+[value='Sky']:checked ~ .accordion [for='sky'] {
+  color: #ffffff;
+  transition: max-height 0.2s ease-out;
+}
+
+/* MQ
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (max-width: 650px) {
+  .accordion {
+    min-height: 0;
+  }
+
+  .accordion,
+  .accordion li {
+    flex-direction: column;
+  }
+
+  .accordion .accordion-title {
+    flex-direction: row;
+    width: auto;
+  }
+
+  .accordion .accordion-heading {
+    transform: none;
+  }
+}
+
+/*-- STUDENT LIST --*/
+
+.accordion-content .content-container {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.accordion-content h2 {
+  width: 30%;
+  text-align: center;
+  font-weight: 300;
+}
+
+.slider-vertical .material-symbols-outlined {
+  cursor: pointer;
+}
+
+.slider-vertical .material-symbols-outlined.slick-disabled,
+.slider-vertical .material-symbols-outlined.slick-disabled {
+  opacity: 0.1;
+  cursor: default;
+}
+.slider-vertical div {
+  height: 250px;
+  text-align: center;
+  font-size: 50px;
+  color: #ffffff;
+}
+
+.slider-vertical .student-name h4 {
+  cursor: pointer;
+}
+
+.material-symbols-outlined {
+  font-size: 48px;
+}
+
+/**--- Single Student Details Page Overlay ---**/
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.student-details {
+  padding: 7em 10em;
+  width: 100%;
+  color: var(--white);
+}
+
+.student-details .student-name {
+  margin-bottom: 2em;
+}
+
+.student-details .student-name h2 {
+  font-size: 48px;
+}
+
+.student-details .student-name h4 {
+  font-size: 36px;
+  font-weight: 300;
+}
+
+.student-details .student-name h3 {
+  font-weight: 300;
+}
+
+.student-details .project-desc p {
+  margin-bottom: 1em;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/*--- MEDIA QUERIES (XS - SM - MD) ---*/
+
+@media screen and (max-width: 960px) {
+  .site-header {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  nav.main-navigation ul li {
+    display: none;
+  }
+
+  .site-header a.icon {
+    display: block;
+  }
+
+  nav.main-navigation.responsive {
+    position: relative;
+  }
+
+  nav.main-navigation.responsive ul li {
+    float: none;
+    display: block;
+    text-align: left;
+    margin: 0 0;
+  }
+
+  main.main-content {
+    height: auto;
+  }
+
+  [value='Animal']:checked ~ .accordion [for='animal'] + .accordion-content,
+  [value='Plant']:checked ~ .accordion [for='plant'] + .accordion-content,
+  [value='Space']:checked ~ .accordion [for='space'] + .accordion-content,
+  [value='River']:checked ~ .accordion [for='river'] + .accordion-content,
+  [value='Sky']:checked ~ .accordion [for='sky'] + .accordion-content {
+    display: block;
+  }
+
+  .accordion-content h2 {
+    width: auto;
+    margin-bottom: 2em;
+  }
+
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+
+  .student-details {
+    padding: 7em 3em;
+  }
+}
